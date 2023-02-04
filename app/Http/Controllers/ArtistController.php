@@ -78,7 +78,21 @@ class ArtistController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //Validation des données du formulaire
+        $validated = $request->validate([
+                'firstname' => 'required|max:60',
+                'lastname' => 'required|max:60'
+        ]);
+
+        //Le formulaire a été validé, nous récupérons l'artiste à modifier
+        $artist = Artist::find($id);
+
+        //Mise a jour des données modifiées et sauvegarde dans la base de données
+        $artist->update($validated);
+
+        return view('artists.show', [
+                'artist' => $artist
+        ]);
     }
 
     /**
