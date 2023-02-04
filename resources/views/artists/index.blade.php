@@ -4,10 +4,23 @@
 @section('content')
     <h2>Liste des artistes</h2>
 
-    <ul>
+<ul>
+    <li><a href="{{ route('artists.create') }}">Ajouter</a></li>
+</ul>
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
         @foreach($artists as $artist)
-            <li><a href="{{ route('artists.show', $artist->id) }}">{{ $artist->firstname }}  {{$artist->lastname}}</a></li>
+            <tr>
+                <td><a href="{{ route('artists.show', $artist->id) }}">{{ $artist->firstname }}  {{$artist->lastname}}</a></td>
+            </tr>
         @endforeach
-    </ul>
+    </tbody>
+</table>
 
 @endsection

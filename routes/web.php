@@ -22,9 +22,14 @@ Route::get('/', function () {
 Route::get('/artists', [ArtistController::class, 'index'])
     ->name('artists.index');
 
+
 Route::get('/artists/{id}', [ArtistController::class, 'show'])
     ->where('id', '[0-9]+')
     ->name('artists.show');
+
+Route::delete('/artists/{id}', [ArtistController::class, 'destroy'])
+    ->where('id', '[0-9]+')
+    ->name('artists.delete');
 
 Route::get('/artist/edit/{id}', [ArtistController::class, 'edit'])
 	->where('id', '[0-9]+')
@@ -33,6 +38,12 @@ Route::get('/artist/edit/{id}', [ArtistController::class, 'edit'])
 Route::put('/artist/{id}', [ArtistController::class, 'update'])
 	->where('id', '[0-9]+')
     ->name('artists.update');
+
+Route::get('/artists/create', [ArtistController::class, 'create'])
+    ->name('artists.create');
+
+Route::post('/artists/create', [ArtistController::class, 'store'])
+    ->name('artists.store');
 
 Route::get('/localities', [LocalityController::class, 'index'])
     ->name('localities.index');
