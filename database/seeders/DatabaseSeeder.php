@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             LocalitySeeder::class,
             LocationSeeder::class,
+            ArtistSeeder::class,
         ]);
     }
 }

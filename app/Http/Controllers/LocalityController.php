@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Locality;
 use Illuminate\Http\Request;
+use App\Models\Location;
 
 
 class LocalityController extends Controller
@@ -18,10 +19,10 @@ class LocalityController extends Controller
     }
 
         public function show($id){
-            $locality = Locality::all()->find($id);
+            $locations = Locality::all()->find($id)->locations;
 
             return view('localities.show', [
-                'locality' => $locality
+                'locations' => $locations
             ]);
         }
 }
