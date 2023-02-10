@@ -4,19 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Type extends Model
+class RepresentationUser extends Model
 {
     protected $fillable = [
-        'type'
+        'representation_id',
+        'user_id',
+        'places'
     ];
 
     protected $guarded = [];
 
-    protected $table = 'types';
+    protected $table = 'representation_users';
 
     public $timestamps = false;
-
-    public function artistTypes(){
-        return $this->hasMany(ArtistType::class);
-    }
 }

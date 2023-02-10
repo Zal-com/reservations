@@ -7,17 +7,18 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up()
     {
-        Schema::create('artist_types', function (Blueprint $table) {
+        Schema::create('representation_users', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('artist_id');
-            $table->foreignId('type_id');
+            $table->foreignId('representation_id');
+            $table->foreignId('user_id');
+            $table->integer('places');
 
             //Foreign Keys
-            $table->foreign('artist_id')->references('id')->on('artists')
+            $table->foreign('representation_id')->references('id')->on('representations')
                 ->cascadeOnUpdate()
                 ->restrictOnDelete();
 
-            $table->foreign('type_id')->references('id')->on('types')
+            $table->foreign('user_id')->references('id')->on('users')
                 ->cascadeOnUpdate()
                 ->restrictOnDelete();
         });
@@ -25,6 +26,6 @@ return new class extends Migration {
 
     public function down()
     {
-        Schema::dropIfExists('artist_types');
+        Schema::dropIfExists('representation_users');
     }
 };

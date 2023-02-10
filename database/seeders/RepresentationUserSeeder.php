@@ -6,15 +6,15 @@ use Faker\Factory as Faker;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
-use App\Models\Type;
+use App\Models\RepresentationUser;
 
-class TypeSeeder extends Seeder
+class RepresentationUserSeeder extends Seeder
 {
     public function run()
     {
         Schema::disableForeignKeyConstraints();
 
-        Type::truncate();
+        RepresentationUser::truncate();
 
         Schema::enableForeignKeyConstraints();
 
@@ -22,9 +22,11 @@ class TypeSeeder extends Seeder
 
 
         $record = [
-            'type' => $faker->words(1, true)
+            'representation_id' => 1,
+            'user_id' => 1,
+            'places' => $faker->numberBetween(1, 20)
         ];
 
-        DB::table('types')->insert($record);
+        DB::table('representation_users')->insert($record);
     }
 }

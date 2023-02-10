@@ -6,15 +6,15 @@ use Faker\Factory as Faker;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
-use App\Models\Type;
+use App\Models\ArtistTypeShow;
 
-class TypeSeeder extends Seeder
+class ArtistTypeShowSeeder extends Seeder
 {
     public function run()
     {
         Schema::disableForeignKeyConstraints();
 
-        Type::truncate();
+        ArtistTypeShow::truncate();
 
         Schema::enableForeignKeyConstraints();
 
@@ -22,9 +22,10 @@ class TypeSeeder extends Seeder
 
 
         $record = [
-            'type' => $faker->words(1, true)
+            'artist_type_id' => 1,
+            'show_id' => 1,
         ];
 
-        DB::table('types')->insert($record);
+        DB::table('artist_type_shows')->insert($record);
     }
 }

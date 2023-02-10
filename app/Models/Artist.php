@@ -18,4 +18,8 @@ class Artist extends Model
 
     protected $table = 'artists';
     public $timestamps = false;
+
+    public function artistTypes(){
+        return $this->hasMany(ArtistType::class);
+    }
 }
